@@ -1,4 +1,4 @@
-## Summary: Simple Data
+## Summary
 
 Constants: `let`
 Variables: `var`
