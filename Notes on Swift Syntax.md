@@ -56,3 +56,18 @@ print(username)
 ```
 
 Swift must always know the type of data inside a constant or variable, and mostly uses type inference to figure that out based on the data we assign. However, it’s also possible to use type annotation to force a particular type.
+
+
+`if` statements to check a condition 
+`else` block, and/or multiple `else if` blocks to check other conditions
+
+`||` or 
+`&&` and 
+
+`switch` if same kinds of check is repeated alot
+`fallthrough` executes the following case aswell
+
+`for` loop over arrays, sets, dictionaries, and ranges. assign items to a loop variable and use it inside the loop. to ignore the loop variable underscore `_`can be used.
+`while` craft custom loops that will continue running until a condition becomes false.
+`continue` skip the rest of the loop and starts at the next itteration. 
+`break` ends the loop
