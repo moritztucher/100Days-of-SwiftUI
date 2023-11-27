@@ -90,3 +90,35 @@ switch variablename {
 `break` ends the loop
 
 ## Functions
+### Declare Functions with Parameters and Return
+Define function: `func funcName() {}`
+call funtion: `funcName()`
+
+Funcion with Paramters: `func funcName(name: type) {}`
+
+Funtion with return: `func funcName() -> type {return value}`
+
+Funtion with return that only have one line dont need a `return`: `func funcName(name: type) -> type { name == value}` or `func funcName(Name: type) -> type {funcWithReturn(Parameters)}`
+
+Function that returns Array: `func getArray() -> [String] { ["", ""]}`
+
+Function that returns Dict: `func getDict() -> [String: String] { ["key": "value" , "key2":"value2"]}`
+
+Function that returns Tuple: `func getTuple() -> (value1: String, value2: String) { ("", "")}`
+alternative: `func getTuple() -> (String, String) { ("", "")}`
+access tuple either by value name `value.firstname` or numeric if it doesnt have a name `value.0`
+alternative: `let (value1, _) = getTuple()`
+
+### Customzie Parameter Labels
+Inside it the funciton you can declare the parameter name the function uses inside itself and outside when it is called. 
+
+Declaring different outside and inside name: 
+`func testFunc(outsideName insideName: Type)`
+
+Declaring only inside name: 
+`func testFunc(_ insideName: Type)`
+the `_` removes the outside parametername. 
+
+if neither outside Name nor _ is used, the inside name is also the ouside name. 
+
+## Error handeling 
