@@ -1,38 +1,39 @@
-## Summary
-
+## Variables/Constants
 Constants: `let`
 Variables: `var`
 
 built-in arithmetic operators, such as `+`, `-`, `*`, and `/` can be shortend to `+=`, `-=`, `*=`, and `/=` if just variable itself should be changes. 
 Example: `counter = counter + 1` => `counter += 1`
 
+## Types
+**String** holds text:
+`var text: String = "Hello World!"`
+* String interpolation works with `\(var/let)` but can only be a var if the string is also a var. `"Your name \(var/let name)"` similar to : `"Your Name" + varname`
+* Multiline string `""" """`
+* Double quotes inside a String: `" \"text\" "`
+* String length: `.count()`
 
-
-String holds text:
-String interpolation works with `\(var/let)` but can only be a var if the string is also a var. 
-`let playerName: String = "Roy"`
-
-Int holds whole numbers:
+**Int** holds whole numbers:
 `var luckyNumber: Int = 13`
 
-Double holds decimal numbers:
+**Double** holds decimal numbers:
 `let pi: Double = 3.141`
 
-Bool holds either true or false:
-Booleans can be flipped with `.toogle()`
+**Bool** holds either true or false:
 `var isAuthenticated: Bool = true`
+* Booleans can be flipped with `.toogle()`
 
-Array holds lots of different values, all in the order they are added using integer indices. `[datatyp]`
+**Array** holds lots of different values, all in the order they are added using integer indices. `[datatyp]`
 helpful functionality: 
 * count
 * append() 
 * contains()
 `var albums: [String] = ["Red", "Fearless"]`
 
-Dictionary holds lots of different values, where the key decides how data should be accessed, similar functionality to arrays. `[Datatyp of Key: Datatyp of Value]`
+**Dictionary** holds lots of different values, where the key decides how data should be accessed, similar functionality to arrays. `[Datatyp of Key: Datatyp of Value]`
 `var user: [String: String] = ["id": "@twostraws"]`
 
-Set holds lots of different values, but stores them in an order that’s optimized for checking what it contains. And can contain any value only once. `Set<datatyp>`
+**Set** holds lots of different values, but stores them in an order that’s optimized for checking what it contains. And can contain any value only once. `Set<datatyp>`
 `var books: Set<String> = Set(["The Bluest Eye", "Foundation", "Girl, Woman, Other"])`
 
 Type annotations are not needed:
@@ -40,6 +41,7 @@ Type annotations are not needed:
 Only for empty array, dict or set.
 `var teams: [String] = [String]()`
 
+**Enum:**
 Values of an enum have the same type as the enum itself. Can specify a range of acceptable values such as a list of actions the user can perform, the types of files we are able to write, or the types of notification to send to the user
 ```
 enum UIStyle {
@@ -55,19 +57,36 @@ username = "@twostraws"
 print(username)
 ```
 
-Swift must always know the type of data inside a constant or variable, and mostly uses type inference to figure that out based on the data we assign. However, it’s also possible to use type annotation to force a particular type.
+Swift must always know the type of data inside a constant or variable, and mostly uses type inference to figure that out based on the data we assign. However, it's also possible to use type annotation to force a particular type.
 
+## Conditionals and Loops
 
+### Conditional:
+**if/else**
 `if` statements to check a condition 
 `else` block, and/or multiple `else if` blocks to check other conditions
+* `||` or 
+* `&&` and 
 
-`||` or 
-`&&` and 
-
-`switch` if same kinds of check is repeated alot
+**switch-case** if same kinds of check is repeated alot 
+```
+switch variablename {
+    case vale1: 
+    case value2:
+    default:
+}
+```
 `fallthrough` executes the following case aswell
 
+### Loops
+**for-loop**
 `for` loop over arrays, sets, dictionaries, and ranges. assign items to a loop variable and use it inside the loop. to ignore the loop variable underscore `_`can be used.
+
+**while-loop**
 `while` craft custom loops that will continue running until a condition becomes false.
+
 `continue` skip the rest of the loop and starts at the next itteration. 
+
 `break` ends the loop
+
+## Functions
