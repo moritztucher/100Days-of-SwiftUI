@@ -43,7 +43,7 @@ Only for empty array, dict or set.
 
 **Enum:**
 Values of an enum have the same type as the enum itself. Can specify a range of acceptable values such as a list of actions the user can perform, the types of files we are able to write, or the types of notification to send to the user
-```
+```swift
 enum UIStyle {
     case light, dark, system
 }
@@ -51,7 +51,7 @@ var style = UIStyle.light
 ```
 
 type annotations for empty constants
-```
+```swift
 let username: String
 username = "@twostraws"
 print(username)
@@ -69,7 +69,7 @@ Swift must always know the type of data inside a constant or variable, and mostl
 * `&&` and 
 
 **switch-case** if same kinds of check is repeated alot 
-```
+```swift
 switch variablename {
     case vale1: 
     case value2:
@@ -122,3 +122,39 @@ the `_` removes the outside parametername.
 if neither outside Name nor _ is used, the inside name is also the ouside name. 
 
 ## Error handeling 
+Creating own errors
+```swift
+enum nameError: Error {
+    case error1, error2
+}
+```
+
+functions need to be marked with `throws` : 
+`func funcName(_ prameter: Type) throws -> Type {}`
+throws needs a try-catch inside the funtion 
+```swift
+do {
+    try someRiskyWork()
+} catch {
+    print("Handle errors here")
+}
+```
+with `catch` all errors are caught if specific errors should be caught use `catch nameError.error1`
+
+## Closures
+* Functions can be assigned to variables 
+`var funcCopy = funcReal`
+* pass functions into functions 
+* Return funcitons from funcitons
+
+### Define Closures 
+Create a function on a constant
+```swift
+let sayHello = { (name: String) -> String in
+    print("Hi \(name)!")
+}
+
+sayHello()
+```
+
+### Use Closures
