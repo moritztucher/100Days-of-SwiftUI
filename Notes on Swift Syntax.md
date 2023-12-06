@@ -94,7 +94,8 @@ switch variablename {
 Define function: `func funcName() {}`
 call funtion: `funcName()`
 
-Funcion with Paramters: `func funcName(name: type) {}`
+Function with Paramters: `func funcName(name: type) {}`
+Function with Function as Parameter: `func funcName(parameterFunctio: (type) -> type) -> type {}`
 
 Funtion with return: `func funcName() -> type {return value}`
 
@@ -149,12 +150,213 @@ with `catch` all errors are caught if specific errors should be caught use `catc
 
 ### Define Closures 
 Create a function on a constant
+* Outside Parameter names get lost in Closures
 ```swift
 let sayHello = { (name: String) -> String in
     print("Hi \(name)!")
 }
 
-sayHello()
+sayHello("Bob")
+```
+Other way to create closures
+```swift
+func getUserData(for id: Int) -> String {
+    if id == 1999 {
+        return "Bob"
+    } else {
+        return "Anonymous"
+    }
+}
+
+let data: (Int) -> String = getUserData
+let user = data(1999)
+```
+other way to create closures is inside the area for parameters. 
+It just has to be a "closure-function" that returns the correct type.
+use `{ (Parameters) -> Type in ... }` inside the area for Parameters `()`
+```swift
+let captainFirstTeam = team.sorted(by: { (name1: String, name2: String) -> Bool in
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+
+    return name1 < name2
+})
+```
+### Trailing Closures 
+possible to remove the `(by: )` around the `{}`
+```swift 
+let captainFirstTeam = team.sorted { name1, name2 in
+    ...
+}
+```
+parameter names can be shortend to `$0`, `$1`, `$2` ... 
+```swift
+let reverseTeam = team.sorted { $0 > $1 }
+let tOnly = team.filter { $0.hasPrefix("T") }
+let uppercaseTeam = team.map { $0.uppercased() }
 ```
 
-### Use Closures
+Calling a function that takes a function as parameters using Closures: 
+```swift 
+func makeArray(size: Int, using generator: () -> Int) -> [Int] {}
+
+let rolls = makeArray(size: 50) {
+    Int.random(in: 1...20)
+}
+
+```
+
+## Structs
+Sturctures can be written on constants and variables. Its called instant of struct. 
+Define structs: 
+```swift
+struct StructName {
+    let constantName1: Type
+    let constantName2: Type
+    let constantName3: Type
+
+    func printSummary() {
+        print("\(title) (\(year)) by \(artist)")
+    }
+}
+
+let name1 = StructName(constantName1: "", constantName2: "", constantName3: "")
+var name2 = StructName(constantName1: "", constantName2: "", constantName3: "")
+```
+
+If values inside the Struct are changing it has to be written on a variable. 
+And the function that changes has to be declares as `mutating func`:
+```swift
+struct Employee {
+    let name: String
+    var vacationRemaining: Int
+
+    func takeVacation(days: Int) {
+        if vacationRemaining > days {
+            vacationRemaining -= days
+            print("I'm going on vacation!")
+            print("Days remaining: \(vacationRemaining)")
+        } else {
+            print("Oops! There aren't enough days remaining.")
+        }
+    }
+}
+
+var archer = Employee(name: "Sterling Archer", vacationRemaining: 14)
+archer.takeVacation(days: 5)
+```
+Stucts can have be defined with default values on variables and constants: 
+```swift
+struct StructName {
+    let constantName1 = Value
+    var variableName1 = Value
+}
+```
+Constants are not part of the initializer anymore because the value of a constant cant change. 
+Variables are now optional, if no new value is assigned at the initializer the default value will be used. 
+
+### Custom Initializer
+initializers are declared with `ìnit()` and it can have more then one initializers
+```swift 
+struct Player {
+    let name: String
+    let number: Int
+    
+    init(name: String, number: Int) {
+        self.name = name
+        self.number = number
+    }
+    
+    init(name: String) {
+        self.name = name
+        number = Int.random(in: 1...99)
+    }
+}
+
+let megan = Player(name: "Megan R", number: 15)
+let bob = Player(name: "Bob M")
+```
+
+### Dynamic Variables in Structs
+Computed properties (variables) can be defined as: 
+```swift
+struct StructName {
+    var variableName1 = Value
+    var variableName2 = Value
+
+    var variableName3: Int {
+        variableName1 - variableName2
+    }
+}
+```
+those variables can have also a get and set method. `newValue` is provided by swift and is the assigned value (`StructName.variableName3 = Value`)
+```swift
+var variableName3: Int {
+    get {
+        variableName1 - variableName2
+    }
+    set {
+        variableName1 = variableName2 + newValue
+    }
+}
+```
+`get` and `set` have different type of codes, which are run either when reading or writing. 
+
+### Observer in Structs
+**(Keep code minimal in observers)**
+`didSet` run when property is changed
+`willSet` rund before property is changed 
+```swift
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value is: \(contacts)")
+            print("New value will be: \(newValue)")
+        }
+
+        didSet {
+            print("There are now \(contacts.count) contacts.")
+            print("Old value was \(oldValue)")
+        }
+    }
+}
+```
+`oldValue` the old value that the property has before change 
+`newValue` the new value the property is changing too
+
+## Access Control: Properties and Methods
+* `private` don't let anything outside the struct use this.
+    * `private(set)` allowes read but not write  
+* `fileprivate` don't let anything outside the current file use this.
+* `public` let anyone, anywhere use this.
+
+## Static: Properties and Methods
+`static` methods can't access non static methods 
+non static methods can access `static` methods 
+Struct doesn't need to be initalized to run `static` methods
+
+### Examples 
+For AppData to organize common data in static properties:
+```swift
+struct AppData {
+    static let version = "1.1.1.1.2"
+    static let saveFilename = "settings.json"
+    static let homeURL = "https://github.com/moritztucher/100DaysOfSwiftUI"
+}
+```
+Example Property to see how something might look in a UI
+```
+struct Employee {
+    let username: String
+    let password: String
+
+    static let example = Employee(username: "cfederighi", password: "hairforceone")
+}
+```
+
+## Self vs self
+* `self` refers to the current value of the struct
+* `Self` refers to the current type.
