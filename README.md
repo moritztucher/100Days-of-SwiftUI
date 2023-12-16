@@ -1,5 +1,6 @@
 # 100 Days Of SwiftUI
-Repository for [The 100 day SwiftUI](https://www.hackingwithswift.com/100/swiftui) course by [hackingwithswift](www.hackingwithswift.com)
+Repository for [The 100 day SwiftUI](https://www.hackingwithswift.com/100/swiftui) course by [hackingwithswift](www.hackingwithswift.com). 
+It is only for my own usage to learn SwiftUI with the help of the course and to track my own progress.
 
 ## Days 1-14: Introduction to Swift
 * :white_check_mark: Day 1  – variables, constants, strings, and numbers 
