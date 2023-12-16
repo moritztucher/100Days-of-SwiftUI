@@ -360,3 +360,5 @@ struct Employee {
 ## Self vs self
 * `self` refers to the current value of the struct
 * `Self` refers to the current type.
+
+## Classes
