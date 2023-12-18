@@ -14,7 +14,7 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 9  – closures, passing functions into functions, and checkpoint 5 
 * :white_check_mark: Day 10 – structs, computed properties, and property observers
 * :white_check_mark: Day 11 – access control, static properties and methods, and checkpoint 6
-* Day 12 – classes, inheritance, and checkpoint 7
+* :white_check_mark: Day 12 – classes, inheritance, and checkpoint 7
 * Day 13 – protocols, extensions, and checkpoint 8
 * Day 14 – optionals, nil coalescing, and checkpoint 9
 

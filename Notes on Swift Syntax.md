@@ -348,7 +348,7 @@ struct AppData {
 }
 ```
 Example Property to see how something might look in a UI
-```
+```swift
 struct Employee {
     let username: String
     let password: String
@@ -362,3 +362,67 @@ struct Employee {
 * `Self` refers to the current type.
 
 ## Classes
+```swift
+class ClassName {
+    let parentVariable = "Hello World!"
+
+    init(){}
+
+    func parentFunc () {}
+}
+```
+**Inheritance between classes:**
+```swift 
+class ClassName : ParentClass {
+    func printVariable(){
+        print(parentVariable)
+    }
+}
+```
+**Overriding functions from parent classes:**
+```swift 
+class ClassName : ParentClass {
+    override func parentFunc () {}
+
+}
+```
+**Final:**
+A `final` class doesnt support inheritance. It can Inherit from other classes but cant be a parent class. 
+
+**Copying classes:** 
+```swift
+class User {
+    var username = "Anonymous"
+    func copy() -> User {
+            let user = User()
+            user.username = username
+            return user
+        }
+}
+//Option 1: 
+var user1 = User()
+var user2 = user1
+
+//Option 2: (Create a copy function inside the Class)
+var user3 = user1.copy()
+```
+
+**Deinitializer:**
+Classes can get a deinitializer `deinit{}`. It gets called when the class object gets "destroyed". 
+They dont take any parameters and dont have a return. 
+"The deinitializer will automatically be called when the final copy of a class instance is destroyed. That might mean it was created inside a function that is now finishing." 
+```swift
+class User {
+    let id: Int
+
+    init(id: Int) {
+        self.id = id
+        print("User \(id): I'm alive!")
+    }
+
+    deinit {
+        print("User \(id): I'm dead!")
+    }
+}
+```
+
