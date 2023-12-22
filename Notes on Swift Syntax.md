@@ -1,3 +1,9 @@
+## Swift’s design guidelines
+* returning a new value rather than changing it in place, use word endings like *ed* or *ing*
+  * ex.: reversed() sorted()
+* if you write on the existing value, do not use *ed* or *ing*
+  * ex.: sort()
+
 ## Variables/Constants
 Constants: `let`
 Variables: `var`
@@ -358,8 +364,8 @@ struct Employee {
 ```
 
 ## Self vs self
-* `self` refers to the current value of the struct
-* `Self` refers to the current type.
+* `self` refers to the current **value**.
+* `Self` refers to the current **type**.
 
 ## Classes
 ```swift
@@ -426,3 +432,90 @@ class User {
 }
 ```
 
+## Protocols
+Protocols define what porperties and functions a data type should support. Functions only get a name, parameters and return type but not a body. Every data type that conforms to the protocoll **must** implements the properties and functions. (excetption if the protocol has an extension where a function is already implemented)
+
+```swift
+protocol Vehicle {
+    func estimateTime(for distance: Int) -> Int
+    func travel(distance: Int)
+}
+
+struct Car: Vehicle {
+    func estimateTime(for distance: Int) -> Int {
+        distance / 50
+    }
+
+    func travel(distance: Int) {
+        print("I'm driving \(distance)km.")
+    }
+
+    func openSunroof() {
+        print("It's a nice day!")
+    }
+}
+```
+
+Functions can also take the protocol type/name as a property
+```swift
+func commute(distance: Int, using vehicle: Vehicle) { }
+```
+
+## Existing Protocolls
+### Equatable (Protocol)
+It will compare all the properties of one object against the same properties in the other object.
+Every Type that can be compared with `< > =` 
+(Int, Double, Bool...)
+
+### Comparable
+allows Swift to see if one object should be sorted before another
+
+
+## Extensions 
+Extends existing data types with new functions. 
+```swift
+extension String {
+    func trimmed() -> String {
+        self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+}
+```
+Why use it? 
+* Code Completion: Swift suggests functions that are in a extension block, making them easier to find 
+* Code organization: The code is more organized and easier to read 
+* Internal access: get full exess to everything in that data that otherwise could be restricted by private
+
+Protocolls can be extenden. If a function gets extended then it is not necerssary to impement it if a new data type with that protocol is created: 
+```swift
+protocol Person {
+    var name: String { get }
+    func sayHello()
+}
+extension Person {
+    func sayHello() {
+        print("Hi, I'm \(name)")
+    }
+}
+struct Employee: Person {
+    let name: String
+}
+let chris = Employee(name: "Chris Hemsworth")
+chris.sayHello()
+```
+
+## Opaque Return
+`some ProtocolName` allows us to change our mind about the exact return later. It tels swift it can expect something that confirms with the protocol but not exactly what it is. For example: `some view` tells swift it gets a view layout but not exactly how the layout is structured.  
+```swift
+func getRandom() -> some Equatable {
+    Int.random(in: 1...6)
+}
+//Changed int to bool
+func getRandom() -> some Equatable {
+    Bool.random()
+}
+```
+
+## 
+```swift
+
+```
