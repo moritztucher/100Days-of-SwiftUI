@@ -515,7 +515,95 @@ func getRandom() -> some Equatable {
 }
 ```
 
+## Optionals
+Optionals let us represent the absence of data, it basically says "this type has no value"
+Variables that can have a value but they dont necessarily have one. `?` behind the type declares the variable as optional.
+```swift
+var username: String? = nil
+```
+### Unwrapping Optionals
+Optional cant be used at places where a non-optional is required. So it has do be unwraped first:
+```swift
+if let unwrappedName = username {
+    print("We got a user: \(unwrappedName)")
+} else {
+    print("The optional was empty.")
+}
+```
+### Unwrapping Optionals with Nil
+`??` nil coalescing operator
+This returns always a type not an optional
+example: (will always return a String)
+```swift
+let tvShows = ["Archer", "Babylon 5", "Ted Lasso"]
+let favorite = tvShows.randomElement() ?? "None"
+```
+
+### Multiple Optionals (Optional chaining)
+The return of an optional chaining is always an optional, to prevent this nil coalescing is needed `?? nil`
+Optional chains can be as long as the user wants, but as soon as any part sends back `nil` the rest of the line is ignored. 
+
+
+```swift
+//if the optional has a value inside, unwrap it then…
+let names = ["Arya", "Bran", "Robb", "Sansa"]
+let chosen = names.randomElement()?.uppercased() ?? "No one"
+```
+other example: 
+if we have a book, and the book has an author, and the author has a first letter, then uppercase it and send it back, otherwise send back A”
+```swift
+let author = book?.author?.first?.uppercased() ?? "A"
+```
+
+### Function Failure With Optionals 
+`try!` it is assumed the code will always work. If not the code will crash: **use `try!` very rarely.**
+
+`try?` checks if a function succeeded or failed it doesnt tell anything else. 
+```swift
+if let user = try? getUser(id: 23) {
+    print("User: \(user)")w
+}
+```
+It is mainly used in three places:
+* In combination with guard let to exit the current function if the try? call returns nil.
+* In combination with nil coalescing to attempt something or provide a default value on failure.
+* When calling any throwing function without a return value, when it genuinely doesn't matter if it succeeds or not 
+
+### Guard
+Alternative to `ìf let` is `guard let`. It switches basically the logic. 
+`ìf let` gets executed if the optional has a value. 
+`guad let` gets executed if the optional doesnt have a value
+```swift
+var myVar: Int? = 3
+
+if let unwrapped = myVar {
+    print("Run if myVar has a value inside")
+}
+guard let unwrapped = myVar else {
+    print("Run if myVar doesn't have a value inside")
+}
+```
+
+* If guard is used to check a function’s inputs are valid, Swift will always require to use return if the check fails.
+* If the check passes and the optional unwrapping has a value inside, it can be used after the guard code finishes.
+```swift
+func printSquare(of number: Int?) {
+    guard let number = number else {
+        print("Missing input")
+
+        // 1: We *must* exit the function here
+        return
+    }
+
+    // 2: `number` is still available outside of `guard`
+    print("\(number) x \(number) is \(number * number)")
+}
+```
+
+
 ## 
 ```swift
 
 ```
+
+
