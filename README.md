@@ -19,7 +19,7 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 14 – optionals, nil coalescing, and checkpoint 9
 
 ## Day 15: Consolidation I
-* Day 15 – Swift review
+* :white_check_mark: Day 15 – Swift review
 
 ## Days 16-24: Starting SwiftUI
 * Day 16 – Project 1, part one
