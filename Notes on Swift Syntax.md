@@ -1,9 +1,3 @@
-## Swift’s design guidelines
-* returning a new value rather than changing it in place, use word endings like *ed* or *ing*
-  * ex.: reversed() sorted()
-* if you write on the existing value, do not use *ed* or *ing*
-  * ex.: sort()
-
 ## Variables/Constants
 Constants: `let`
 Variables: `var`
@@ -599,7 +593,6 @@ func printSquare(of number: Int?) {
     print("\(number) x \(number) is \(number * number)")
 }
 ```
-
 
 ## 
 ```swift

@@ -22,10 +22,10 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 15 – Swift review
 
 ## Days 16-24: Starting SwiftUI
-* Day 16 – Project 1, part one
-* Day 17 – Project 1, part two
-* Day 18 – Project 1, part three
-* Day 19 – Challenge day
+* :white_check_mark: Day 16 – Project 1, part one
+* :white_check_mark: Day 17 – Project 1, part two
+* :white_check_mark: Day 18 – Project 1, part three
+* :white_check_mark: Day 19 – Challenge day
 * Day 20 – Project 2, part one
 * Day 21 – Project 2, part two
 * Day 22 – Project 2, part three
