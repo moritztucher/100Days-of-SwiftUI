@@ -1,4 +1,45 @@
 # View Components
+
+## Stacks
+Allow spacing and allignment inside the stack
+
+```swift
+var body: some View {
+    Stack {
+
+    }
+    .background(.color) //background color
+    .background(.ultraThinMaterial) //Vibrancy
+}
+```
+
+### Vertical Stack
+```swift
+var body: some View {
+    VStack {
+
+    }
+}
+```
+
+### Horizontal Stack
+```swift
+var body: some View {
+    HStack {
+        
+    }
+}
+```
+
+### Depth Stack
+```swift
+var body: some View {
+    ZStack {
+        
+    }
+}
+```
+
 ## Form
 Forms are scrolling lists of static controls like text and images, but can also include user interactive controls like text fields, toggle switches, buttons, and more.
 ```swift
@@ -79,21 +120,46 @@ struct ContentView: View {
 }
 ```
 
+### Button
+```swift
+Button("Button Name", role: .destructive, action: functionName)
+    .buttonStyle(.bordered) //Background color
+    .buttonStyle(.borderedProminent) //Text color white, background color = role
+```
+alternative
+```swift
+Button("Button Name") {
+    print("Now deleting…")
+}
+```
+
+### Custom Button
+```swift
+Button {
+    print("Edit button was tapped")
+} label: {
+    Label("Edit", systemImage: "pencil")
+        .padding()
+        .foregroundStyle(.white)
+        .background(.red)
+}
+```
+
 ### 
 ```swift
 
 ```
-### 
+
+## Color Frame 
 ```swift
-
+Color.colorName
+    .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 200)
 ```
-### 
+alternative:
 ```swift
-
+Color(red: 1, green: 0.8, blue: 0)
+    .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 200)
 ```
-
-
-
 
 ## ForEach
 Creates a view for each time it goes through the loop
@@ -105,7 +171,89 @@ Form {
 }
 ```
 
+## Color Gradient
+
+### Linear Gradient
+```swift
+struct ContentView: View {
+    var body: some View {
+        LinearGradient(stops: [
+            .init(color: .white, location: 0.05),
+            .init(color: .black, location: 0.95),
+        ], startPoint: .top, endPoint: .bottom)
+    }
+}
+```
+
+### Radial Gradient
+```swift
+struct ContentView: View {
+    var body: some View {
+        RadialGradient(colors: [.blue, .black], center: .center, startRadius: 20, endRadius: 200)
+    }
+}
+
+```
+
+### Angular Gradient
+```swift
+struct ContentView: View {
+    var body: some View {
+        AngularGradient(colors: [.red, .yellow, .green, .blue, .purple, .red], center: .center)
+    }
+}
+```
+### background/foreground Gradient
+```swift
+Text("Your content")
+    .background(.red.gradient)
+```
+
+## Alert Messages
+```swift
+struct ContentView: View {
+    @State private var showingAlert = false
+
+    var body: some View {
+        Button("Show Alert") {
+            showingAlert = true
+        }
+        .alert("Important message", isPresented: $showingAlert) {
+            Button("OK") { }
+        }
+    }
+}
+```
+Alternatives: 
+```swift
+.alert("Important message", isPresented: $showingAlert) {
+    Button("Delete", role: .destructive) { }
+    Button("Cancel", role: .cancel) { }
+}
+```
+```swift
+.alert("Important message", isPresented: $showingAlert) {
+    Button("OK", role: .cancel) { }
+} message: {
+    Text("Please read this.")
+}
+```
+
+
 ## 
+```swift
+
+```
+### 
+```swift
+
+```
+
+## 
+```swift
+
+```
+### 
 ```swift
 
 ```
