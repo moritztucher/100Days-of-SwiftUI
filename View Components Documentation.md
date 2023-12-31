@@ -1,5 +1,24 @@
 # View Components
 
+### Modifiers
+The order matters, imagine that SwiftUI renders your view after every single modifier.
+```swift
+.frame(maxWidth: .infinity, maxHeight: .infinity) //Sets the size of the stack
+.background(.color) //background color
+.background(.ultraThinMaterial) //Vibrancy
+.foregroundStyle(useRedText ? .red : .blue) //Text Color with condition
+```
+
+### Enviorment Modifier
+```swift
+VStack {
+
+}
+.font(.title) //Changes the font size
+
+```
+
+
 ## Stacks
 Allow spacing and allignment inside the stack
 
@@ -8,8 +27,6 @@ var body: some View {
     Stack {
 
     }
-    .background(.color) //background color
-    .background(.ultraThinMaterial) //Vibrancy
 }
 ```
 
@@ -240,19 +257,80 @@ Alternatives:
 ```
 
 
-## 
+## View composition
 ```swift
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("First")
+                .font(.largeTitle)
+                .padding()
+                .foregroundStyle(.white)
+                .background(.blue)
+                .clipShape(.capsule)
 
+            Text("Second")
+                .font(.largeTitle)
+                .padding()
+                .foregroundStyle(.white)
+                .background(.blue)
+                .clipShape(.capsule)
+        }
+    }
+}
 ```
-### 
+can be changed to: 
 ```swift
+struct CapsuleText: View {
+    var text: String
 
+    var body: some View {
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .foregroundStyle(.white)
+            .background(.blue)
+            .clipShape(.capsule)
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 10) {
+            CapsuleText(text: "First")
+            CapsuleText(text: "Second")
+        }
+    }
+}
 ```
 
-## 
+## Custom modifiers
 ```swift
-
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundStyle(.white)
+            .padding()
+            .background(.blue)
+            .clipShape(.rect(cornerRadius: 10))
+    }
+}
 ```
+When working with custom modifiers, it’s usually a smart idea to create extensions on View that make them easier to use.  
+```swift
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+```
+Used then: 
+```swift
+Text("Hello World")
+    .titleStyle()
+```
+
 ### 
 ```swift
 
