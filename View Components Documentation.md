@@ -162,6 +162,24 @@ Button {
 }
 ```
 
+### Stepper
+```swift
+Stepper("\(sleepAmount) hours", value: $sleepAmount, in: 4...12, step: 0.25)
+```
+
+### Slider 
+```swift
+
+```
+
+### Date Picker
+```swift
+@State private var wakeUp = Date.now
+
+DatePicker("Please enter a date", selection: $wakeUp, displayedComponents: .hourAndMinute, in: Date.now... )
+    .labelsHidden()
+```
+
 ### 
 ```swift
 

@@ -28,18 +28,23 @@ helpful functionality:
 * count
 * append() 
 * contains()
-`var albums: [String] = ["Red", "Fearless"]`
+`var albums: Array<String> = ["Red", "Fearless"]`
 
 **Dictionary** holds lots of different values, where the key decides how data should be accessed, similar functionality to arrays. `[Datatyp of Key: Datatyp of Value]`
-`var user: [String: String] = ["id": "@twostraws"]`
+`var user: Dictionary<String: String> = ["id": "@twostraws"]`
+`user["keyName", default:""]`
 
 **Set** holds lots of different values, but stores them in an order that’s optimized for checking what it contains. And can contain any value only once. `Set<datatyp>`
 `var books: Set<String> = Set(["The Bluest Eye", "Foundation", "Girl, Woman, Other"])`
+`books.insert()`
+`books.contains()`
 
 Type annotations are not needed:
-`var soda: [String] = ["Coke", "Pepsi", "Irn-Bru"]`
-Only for empty array, dict or set.
+`var soda: [String] = ["Coke", "Pepsi", "Irn-Bru"]` -> Array
+`var soda: [String: String] = ["id": "@twostraws"]` -> Array
+Only for empty array, dict:
 `var teams: [String] = [String]()`
+`var teams: [String: String] = [String: String]()`
 
 **Enum:**
 Values of an enum have the same type as the enum itself. Can specify a range of acceptable values such as a list of actions the user can perform, the types of files we are able to write, or the types of notification to send to the user
@@ -85,6 +90,7 @@ switch variablename {
 **while-loop**
 `while` craft custom loops that will continue running until a condition becomes false.
 
+### Others
 `continue` skip the rest of the loop and starts at the next itteration. 
 
 `break` ends the loop
@@ -140,7 +146,8 @@ do {
     print("Handle errors here")
 }
 ```
-with `catch` all errors are caught if specific errors should be caught use `catch nameError.error1`
+with `catch` all errors are caught if specific errors should be caught use `catch nameError.error1`. 
+A generic `catch` is always needed.
 
 ## Closures
 * Functions can be assigned to variables 
@@ -593,11 +600,3 @@ func printSquare(of number: Int?) {
     print("\(number) x \(number) is \(number * number)")
 }
 ```
-
-
-## 
-```swift
-
-```
-
-
