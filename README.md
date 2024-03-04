@@ -26,19 +26,19 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 17 – Project 1, part two
 * :white_check_mark: Day 18 – Project 1, part three
 * :white_check_mark: Day 19 – Challenge day
-* Day 20 – Project 2, part one
-* Day 21 – Project 2, part two
-* Day 22 – Project 2, part three
-* Day 23 – Project 3, part one
-* Day 24 – Project 3, part two
+* :white_check_mark: Day 20 – Project 2, part one
+* :white_check_mark: Day 21 – Project 2, part two
+* :white_check_mark: Day 22 – Project 2, part three
+* :white_check_mark: Day 23 – Project 3, part one
+* :white_check_mark: Day 24 – Project 3, part two
 
 ## Day 25: Consolidation II
-* Day 25 – Milestone: Projects 1-3
+* :white_check_mark: Day 25 – Milestone: Projects 1-3
 
 ## Days 26-34: Expanding your skills
-* Day 26 – Project 4, part one
-* Day 27 – Project 4, part two
-* Day 28 – Project 4, part three
+* :white_check_mark: Day 26 – Project 4, part one
+* :white_check_mark: Day 27 – Project 4, part two
+* :white_check_mark: Day 28 – Project 4, part three
 * Day 29 – Project 5, part one
 * Day 30 – Project 5, part two
 * Day 31 – Project 5, part three
