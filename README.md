@@ -42,12 +42,12 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 29 – Project 5, part one
 * :white_check_mark: Day 30 – Project 5, part two
 * :white_check_mark: Day 31 – Project 5, part three
-* Day 32 – Project 6, part one
-* Day 33 – Project 6, part two
-* Day 34 – Project 6, part three
+* :white_check_mark: Day 32 – Project 6, part one
+* :white_check_mark: Day 33 – Project 6, part two
+* :white_check_mark: Day 34 – Project 6, part three
 
 ## Day 35: Consolidation III
-* Day 35 – Milestone: Projects 4-6
+* :white_check_mark: Day 35 – Milestone: Projects 4-6
 
 ## Days 36-46: Scaling up to bigger apps
 * Day 36 – Project 7, part one
