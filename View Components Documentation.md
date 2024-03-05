@@ -66,17 +66,51 @@ var body: some View {
     }
 }
 ```
-### Section (Visual Chunks)
-To group related items visually
+
+## List
+List are  lists of controls like text and images, but can also include user interactive controls like text fields, toggle switches, buttons, and more. Other then forms they can include dynamic content. 
 ```swift
-Form {
-    Section ("Title it if you want") {
+var body: some View {
+    List {
         
     }
-    Section {
-        
+    List(0..<5) {
+        Text("Dynamic row \($0)")
     }
 }
+```
+Creating List content from an array:
+```swift
+let people = ["Finn", "Leia", "Luke", "Rey"]
+
+var body: some View {
+    List(people, id: \.self) {
+        Text($0)
+    }
+
+    List {
+    Text("Static Row")
+
+    ForEach(people, id: \.self) {
+        Text($0)
+    }
+
+    Text("Static Row")
+    }
+}
+
+```
+
+## Section (Visual Chunks)
+To group related items visually
+```swift
+Section ("Title it if you want") {
+    
+}
+Section {
+    
+}
+
 ```
 
 ## Navigation Bar
@@ -180,11 +214,6 @@ Stepper("\(sleepAmount.formatted()) hours", value: $sleepAmount, in: 4...12, ste
 
 DatePicker("Please enter a date", selection: $wakeUp, displayedComponents: .hourAndMinute, in: Date.now... )
     .labelsHidden()
-```
-
-### 
-```swift
-
 ```
 
 ## Color Frame 
@@ -351,7 +380,7 @@ Text("Hello World")
     .titleStyle()
 ```
 
-### 
+## 
 ```swift
 
 ```
