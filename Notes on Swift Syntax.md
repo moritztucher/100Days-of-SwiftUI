@@ -340,6 +340,14 @@ struct App {
 * `fileprivate` don't let anything outside the current file use this.
 * `public` let anyone, anywhere use this.
 
+## Property Wrapper: @
+[All SwiftUI property wrappers explained and compared](https://www.hackingwithswift.com/quick-start/swiftui/all-swiftui-property-wrappers-explained-and-compared)
+* `@state`
+* ``
+* ``
+* ``
+* ``
+
 ## Static: Properties and Methods
 `static` methods can't access non static methods 
 non static methods can access `static` methods 

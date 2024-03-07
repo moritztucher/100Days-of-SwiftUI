@@ -50,9 +50,9 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 35 – Milestone: Projects 4-6
 
 ## Days 36-46: Scaling up to bigger apps
-* Day 36 – Project 7, part one
-* Day 37 – Project 7, part two
-* Day 38 – Project 7, part three
+* :white_check_mark: Day 36 – Project 7, part one
+* :white_check_mark: Day 37 – Project 7, part two
+* :white_check_mark: Day 38 – Project 7, part three
 * Day 39 – Project 8, part one
 * Day 40 – Project 8, part two
 * Day 41 – Project 8, part three
