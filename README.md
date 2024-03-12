@@ -53,14 +53,14 @@ It is only for my own usage to learn SwiftUI with the help of the course and to 
 * :white_check_mark: Day 36 – Project 7, part one
 * :white_check_mark: Day 37 – Project 7, part two
 * :white_check_mark: Day 38 – Project 7, part three
-* Day 39 – Project 8, part one
-* Day 40 – Project 8, part two
-* Day 41 – Project 8, part three
-* Day 42 – Project 8, part four
-* Day 43 – Project 9, part one
-* Day 44 – Project 9, part two
-* Day 45 – Project 9, part three
-* Day 46 – Project 9, part four
+* :white_check_mark: Day 39 – Project 8, part one
+* :white_check_mark: Day 40 – Project 8, part two
+* :white_check_mark: Day 41 – Project 8, part three
+* :white_check_mark: Day 42 – Project 8, part four
+* :white_check_mark: Day 43 – Project 9, part one
+* :white_check_mark: Day 44 – Project 9, part two
+* :white_check_mark: Day 45 – Project 9, part three
+* :white_check_mark: Day 46 – Project 9, part four
 
 ## Days 47-48: Consolidation IV
 * Day 47 – Milestone: Projects 7-9
