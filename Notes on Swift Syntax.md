@@ -608,3 +608,106 @@ func printSquare(of number: Int?) {
     print("\(number) x \(number) is \(number * number)")
 }
 ```
+
+## Save User Data
+### UserDefaults
+Stores a Vriable till the app gets started again
+```swift
+struct ContentView: View {
+    @State private var tapCount = UserDefaults.standard.integer(forKey: "Tap")
+
+    var body: some View {
+        Button("Tap count: \(tapCount)") {
+            tapCount += 1
+            UserDefaults.standard.set(tapCount, forKey: "Tap")
+        }
+    }
+}
+```
+Writing the Variable into the Storage: `UserDefaults.standard.set(Variable, forKey:"KeyName")`
+Reading the Variable from Storage: `UserDefaults.standard.integer(forKey: "KeyName")` (`integer` is the type of the Variable that is stored)
+
+### @AppStorage
+Alternative method to UserDefaults that can be used in very simple settings.
+
+```swift
+struct ContentView: View {
+    @AppStorage("tapCount") private var tapCount = 0
+
+    var body: some View {
+        Button("Tap count: \(tapCount)") {
+            tapCount += 1
+        }
+    }
+}
+```
+
+### UserDefaults as JSON
+Struct is the JSON Data, the Variable name is the Key and the Value is the Content. A Scruct must be Codable to be used. 
+
+The Struct gets encoded as a JSON and the data gets then set with UserDefaults.
+```swift
+struct User: Codable {
+    let firstName: String
+    let lastName: String
+}
+
+@State private var user = User(firstName: "Taylor", lastName: "Swift")
+
+Button("Save User") {
+    let encoder = JSONEncoder()
+
+    if let data = try? encoder.encode(user) {
+        UserDefaults.standard.set(data, forKey: "UserData")
+    }
+}
+```
+
+## JSON 
+### Encoder 
+`JSONEncoder().encode()` means “create an encoder and use it to encode something,”
+
+```swift 
+if let encoded = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encoded, forKey: "Items")
+        }
+```
+
+
+### Decoder
+If the encoded data is from UserDefaults. 
+```swift
+init() {
+    if let savedItems = UserDefaults.standard.data(forKey: "Items") {
+        if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
+            items = decodedItems
+            return
+        }
+    }
+
+    items = []
+}
+```
+
+If the encoded data is from a .json file
+```swift
+struct ScructName: Codable {
+    //Variables to save the data
+}
+
+let newStructName: [StructName]= Bundle.main.decodable("fileName.json")
+```
+
+## Identifiable
+Structs that need a unique ID for example for a expenses list can use a `UUID()` and the struct must be Identifiable
+```swift
+struct ExpenseItem: Identifiable {
+    let id = UUID()
+    let name: String
+    let type: String
+    let amount: Int
+}
+```
+
+## Observable
+Classes that use @Observable can be used in more than one SwiftUI view, and all of those views will be updated when the properties of the class change.

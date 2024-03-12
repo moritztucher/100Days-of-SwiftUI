@@ -380,7 +380,31 @@ Text("Hello World")
     .titleStyle()
 ```
 
-## 
+## Sheet
+Opens a Sheet that gets opened from the Bottom and overlays the "ContentView". 
+`@Environment(\.dismiss)` makes the dismiss animtion. 
 ```swift
+@Environment(\.dismiss) var dismiss
 
+struct SecondView: View {
+    var body: some View {
+        Text("Second View")
+        Button("Dismiss") {
+            dismiss()
+        }
+    }
+}
+
+@State private var showingSheet = false
+
+struct ContentView: View { 
+    var body: some View {
+        Button("Show Sheet") {
+            showingSheet.toggle()
+        }
+        .sheet(isPresented: $showingSheet) {
+            SecondView()
+        }
+    }
+}
 ```
